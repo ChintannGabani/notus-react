@@ -19,15 +19,29 @@ import Index from "views/Index.js";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+
       {/* add routes with layouts */}
-      <Route path="/admin" component={Admin} />
-      <Route path="/auth" component={Auth} />
+
+      {/* <Route path="/admin" component={Admin} />
+      <Route path="/auth" component={Auth} /> */}
+
+      <Route path="/admin" render={() => <Admin />} />
+      <Route path="/auth" render={() => <Auth />} />
+      
       {/* add routes without layouts */}
-      <Route path="/landing" exact component={Landing} />
+      
+      {/* <Route path="/landing" exact component={Landing} />
       <Route path="/profile" exact component={Profile} />
-      <Route path="/" exact component={Index} />
+      <Route path="/" exact component={Index} /> */}
+
+      <Route path="/landing" exact render={() => <Landing />} />
+      <Route path="/profile" exact render={() => <Profile />} />
+      <Route path="/" exact render={() => <Index />} />
+
       {/* add redirect for first page */}
+      {/* if any one change the url and tried to get that then it redirect the firat page. */}
       <Redirect from="*" to="/" />
+      
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
